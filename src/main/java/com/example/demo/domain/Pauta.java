@@ -1,7 +1,8 @@
 package com.example.demo.domain;
 
-import com.example.demo.domain.voto.Voto;
+import com.example.demo.voto.Voto;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -11,6 +12,7 @@ import java.util.Set;
 
 import static javax.persistence.GenerationType.AUTO;
 
+@Builder
 @Entity(name = "PAUTA")
 public class Pauta {
 

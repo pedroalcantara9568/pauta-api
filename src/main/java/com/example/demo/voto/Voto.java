@@ -1,4 +1,4 @@
-package com.example.demo.domain.voto;
+package com.example.demo.voto;
 
 import javax.persistence.*;
 
