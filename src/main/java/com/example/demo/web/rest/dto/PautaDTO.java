@@ -1,6 +1,7 @@
 package com.example.demo.web.rest.dto;
 
-import com.example.demo.voto.Voto;
+import com.example.demo.domain.voto.Voto;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,6 +21,8 @@ public class PautaDTO implements Serializable {
     private String titulo;
     Set<Voto> votos;
     private String status;
+
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime tempoLimite;
 
 }

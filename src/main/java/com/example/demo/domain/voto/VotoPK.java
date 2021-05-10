@@ -1,4 +1,4 @@
-package com.example.demo.voto;
+package com.example.demo.domain.voto;
 
 import java.io.Serializable;
 

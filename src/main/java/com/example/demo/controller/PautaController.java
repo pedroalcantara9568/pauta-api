@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.domain.Pauta;
 import com.example.demo.service.PautaService;
 import com.example.demo.web.rest.dto.PautaDTO;
+import com.example.demo.web.rest.dto.SessaoDTO;
 import com.example.demo.web.rest.mapper.PautaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,5 +30,11 @@ public class PautaController {
     public ResponseEntity<Object> cadastrar(@RequestBody PautaDTO pautaDTO) {
         Pauta pautaCadastrada = pautaService.cadastrar(PautaMapper.toEntity(pautaDTO));
         return new ResponseEntity<>(toDto(pautaCadastrada), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/abrir")
+    public ResponseEntity<Object> abrirVotacao(@RequestBody SessaoDTO sessaoDTO) {
+        Pauta pautaAberta = pautaService.abrirVotacao(sessaoDTO);
+        return new ResponseEntity<>(toDto(pautaAberta), HttpStatus.ACCEPTED);
     }
 }

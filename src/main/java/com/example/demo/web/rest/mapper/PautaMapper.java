@@ -10,7 +10,6 @@ public class PautaMapper {
                 .status(pautaDTO.getStatus())
                 .tempoLimite(pautaDTO.getTempoLimite())
                 .titulo(pautaDTO.getTitulo())
-                .votos(pautaDTO.getVotos())
                 .build();
     }
 
@@ -20,7 +19,6 @@ public class PautaMapper {
                 .status(pauta.getStatus())
                 .tempoLimite(pauta.getTempoLimite())
                 .titulo(pauta.getTitulo())
-                .votos(pauta.getVotos())
                 .build();
     }
 }

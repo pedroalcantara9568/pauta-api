@@ -1,7 +1,14 @@
-package com.example.demo.voto;
+package com.example.demo.domain.voto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @IdClass(VotoPK.class)
 @Entity(name = "VOTO")
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"CPF", "VOTO"})})
