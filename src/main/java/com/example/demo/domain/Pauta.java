@@ -95,4 +95,22 @@ public class Pauta {
             return LocalDateTime.now().plusMinutes(sessaoDTO.getMinutos());
         }
     }
+
+    public boolean estahFechada() {
+        return ehDiferenteDeAberta() || venceuTempoLimite();
+    }
+
+    private boolean ehDiferenteDeAberta() {
+        return !this.status.equals("ABERTA");
+    }
+
+    private boolean venceuTempoLimite() {
+        return this.tempoLimite.isBefore(LocalDateTime.now());
+    }
+
+    public void obterStatus(Pauta pauta) {
+        if (estaNuloOuVazio(pauta.getStatus())) {
+            this.status = "FECHADA";
+        }
+    }
 }
