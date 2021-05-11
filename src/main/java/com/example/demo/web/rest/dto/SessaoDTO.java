@@ -3,7 +3,7 @@ package com.example.demo.web.rest.dto;
 public class SessaoDTO {
 
     private Long idPauta;
-    private int minutos;
+    private Integer minutos;
 
     public Long getIdPauta() {
         return idPauta;
@@ -13,11 +13,11 @@ public class SessaoDTO {
         this.idPauta = idPauta;
     }
 
-    public int getMinutos() {
+    public Integer getMinutos() {
         return minutos;
     }
 
-    public void setMinutos(int minutos) {
+    public void setMinutos(Integer minutos) {
         this.minutos = minutos;
     }
 }

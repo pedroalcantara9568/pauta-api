@@ -3,7 +3,7 @@ package com.example.demo.web.rest.dto;
 import java.io.Serializable;
 
 
-public class StatusCpf implements Serializable {
+public class CpfDTO implements Serializable {
 
     private String status;
 

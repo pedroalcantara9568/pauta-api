@@ -97,15 +97,16 @@ public class Pauta {
     }
 
     public boolean estahFechada() {
-        return ehDiferenteDeAberta() || venceuTempoLimite();
+        return naoEstahAberta() || venceuTempoLimite();
     }
 
-    private boolean ehDiferenteDeAberta() {
+    private boolean naoEstahAberta() {
         return !this.status.equals("ABERTA");
     }
 
     private boolean venceuTempoLimite() {
-        return this.tempoLimite.isBefore(LocalDateTime.now());
+        LocalDateTime agora = LocalDateTime.now();
+        return agora.isAfter(tempoLimite);
     }
 
     public void obterStatus(Pauta pauta) {
