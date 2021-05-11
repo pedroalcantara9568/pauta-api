@@ -25,7 +25,7 @@ public class PautaServiceImpl implements PautaService {
 
     @Override
     public Pauta cadastrar(Pauta pauta) {
-        pauta.obterStatus(pauta);
+        pauta.obterStatusFechadaCasoNulo(pauta);
         return pautaRepository.save(pauta);
     }
 

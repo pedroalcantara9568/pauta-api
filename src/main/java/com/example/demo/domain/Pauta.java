@@ -116,7 +116,7 @@ public class Pauta {
         return agora.isAfter(tempoLimite);
     }
 
-    public void obterStatus(Pauta pauta) {
+    public void obterStatusFechadaCasoNulo(Pauta pauta) {
         if (estaNuloOuVazio(pauta.getStatus())) {
             this.status = FECHADA;
         }
