@@ -97,7 +97,12 @@ public class Pauta {
     }
 
     public boolean estahFechada() {
-        return naoEstahAberta() || venceuTempoLimite();
+        if(naoEstahAberta() || venceuTempoLimite()){
+            this.status = "FECHADA";
+            return true;
+        }else{
+            return false;
+        }
     }
 
     private boolean naoEstahAberta() {

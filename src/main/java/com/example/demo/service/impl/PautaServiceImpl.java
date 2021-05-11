@@ -8,17 +8,16 @@ import com.example.demo.web.rest.dto.SessaoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class PautaServiceImpl implements PautaService {
 
     private final PautaRepository pautaRepository;
-    private final PautaValidador pautaValidador;
 
     @Autowired
-    public PautaServiceImpl(PautaRepository pautaRepository,
-                            PautaValidador pautaValidador) {
+    public PautaServiceImpl(PautaRepository pautaRepository) {
         this.pautaRepository = pautaRepository;
-        this.pautaValidador = pautaValidador;
     }
 
     @Override
@@ -39,5 +38,15 @@ public class PautaServiceImpl implements PautaService {
         return pautaRepository.findById(id).orElseThrow(() -> {
             throw new RuntimeException("Pauta não encontrada");
         });
+    }
+
+    @Override
+    public List<Pauta> consultarPautasAbertas() {
+        return pautaRepository.findAllByStatus("ABERTA");
+    }
+
+    @Override
+    public Pauta atualizarPauta(Pauta pauta) {
+        return this.pautaRepository.save(pauta);
     }
 }
