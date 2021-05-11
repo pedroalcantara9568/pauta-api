@@ -1,9 +1,9 @@
 package com.example.demo.web.rest.exception.handler;
 
-import com.example.desafiopauta.web.rest.exception.CpfInvalidoException;
-import com.example.desafiopauta.web.rest.exception.PautaNaoEncontradaException;
-import com.example.desafiopauta.web.rest.exception.SessaoFechadaException;
-import com.example.desafiopauta.web.rest.exception.VotoDuplicadoException;
+import com.example.demo.web.rest.exception.CpfInvalidoException;
+import com.example.demo.web.rest.exception.PautaNaoEncontradaException;
+import com.example.demo.web.rest.exception.SessaoFechadaException;
+import com.example.demo.web.rest.exception.VotoDuplicadoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
