@@ -9,4 +9,6 @@ public interface PautaService {
     Pauta cadastrar(Pauta toEntity);
 
     Pauta abrirVotacao(SessaoDTO sessaoDTO);
+
+    Pauta buscarPorId(Long id);
 }

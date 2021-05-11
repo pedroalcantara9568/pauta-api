@@ -19,6 +19,4 @@ public class VotoMapper {
                 .voto(voto.getVoto())
                 .build();
     }
-
-
 }

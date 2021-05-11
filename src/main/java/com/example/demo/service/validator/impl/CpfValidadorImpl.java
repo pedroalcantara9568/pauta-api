@@ -14,8 +14,8 @@ import static java.lang.String.format;
 @Component
 public class CpfValidadorImpl implements CpfValidador {
 
-    private final RestTemplate restTemplate;
     private final CpfConfig cpfConfig;
+    private final RestTemplate restTemplate;
 
     @Autowired
     public CpfValidadorImpl(RestTemplate restTemplate, CpfConfig cpfConfig) {
@@ -31,15 +31,16 @@ public class CpfValidadorImpl implements CpfValidador {
     }
 
     private CpfDTO buscarCpf(String cpf) {
-        String uri = format(this.cpfConfig.getUrl(), cpf);
-
-        CpfDTO cpfDTO;
+        String uri = obterUri(cpf);
         try {
-            cpfDTO = restTemplate.getForObject(uri, CpfDTO.class);
+            return restTemplate.getForObject(uri, CpfDTO.class);
         } catch (HttpClientErrorException e) {
             throw new RuntimeException("CPF inválido");
         }
-        return cpfDTO;
+    }
+
+    private String obterUri(String cpf) {
+        return format(this.cpfConfig.getUrl(), cpf);
     }
 
     private boolean ehApto(CpfDTO resposta) {

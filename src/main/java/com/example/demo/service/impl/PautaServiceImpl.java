@@ -29,10 +29,15 @@ public class PautaServiceImpl implements PautaService {
 
     @Override
     public Pauta abrirVotacao(SessaoDTO sessaoDTO) {
-        Pauta pauta = pautaRepository.findById(sessaoDTO.getIdPauta()).orElseThrow(() -> {
-            throw new RuntimeException("Pauta não encontrada");
-        });
+        Pauta pauta = buscarPorId(sessaoDTO.getIdPauta());
         pauta.abrirVotacao(sessaoDTO);
         return pautaRepository.save(pauta);
+    }
+
+    @Override
+    public Pauta buscarPorId(Long id) {
+        return pautaRepository.findById(id).orElseThrow(() -> {
+            throw new RuntimeException("Pauta não encontrada");
+        });
     }
 }
