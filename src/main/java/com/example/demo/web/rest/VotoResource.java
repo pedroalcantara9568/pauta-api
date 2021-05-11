@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.web.rest;
 
 import com.example.demo.domain.voto.Voto;
 import com.example.demo.service.VotoService;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/votos")
-public class VotoController {
+public class VotoResource {
 
     private final VotoService votoService;
 
     @Autowired
-    public VotoController(VotoService votoService) {
+    public VotoResource(VotoService votoService) {
         this.votoService = votoService;
     }
 

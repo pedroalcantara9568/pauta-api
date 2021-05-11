@@ -18,8 +18,6 @@ public class PautaDTO implements Serializable {
     private Long id;
     private String titulo;
     private String status;
-
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime tempoLimite;
-
 }

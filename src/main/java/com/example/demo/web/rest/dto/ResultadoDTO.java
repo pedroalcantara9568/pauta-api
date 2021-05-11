@@ -10,14 +10,9 @@ import lombok.Setter;
 public class ResultadoDTO {
 
     private Long seqPauta;
-
     private String titulo;
-
-    private Integer quantidadeSim;
-
-    private Integer quantidadeNao;
-
     private String status;
-
     private String resultado;
+    private Integer quantidadeSim;
+    private Integer quantidadeNao;
 }

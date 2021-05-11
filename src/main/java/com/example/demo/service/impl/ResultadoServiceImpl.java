@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.example.demo.shared.Constantes.*;
+
 @Component
 public class ResultadoServiceImpl implements ResultadoService {
 
@@ -29,8 +31,8 @@ public class ResultadoServiceImpl implements ResultadoService {
     }
 
     private ResultadoDTO construirResultado(Pauta pauta) {
-        Integer quantidadeSim = obterQuantidadePorOpcao(pauta.getVotos(), "Sim");
-        Integer quantidadeNao = obterQuantidadePorOpcao(pauta.getVotos(), "Não");
+        Integer quantidadeSim = obterQuantidadePorOpcao(pauta.getVotos(), SIM);
+        Integer quantidadeNao = obterQuantidadePorOpcao(pauta.getVotos(), NAO);
 
         return ResultadoDTO.builder()
                 .seqPauta(pauta.getId())
@@ -44,11 +46,11 @@ public class ResultadoServiceImpl implements ResultadoService {
 
     private String calcularVotos(Integer quantidadeSim, Integer quantidadeNao) {
         if (quantidadeNao.equals(quantidadeSim)) {
-            return "Empate";
+            return EMPATE;
         } else if (quantidadeNao > quantidadeSim) {
-            return "Não";
+            return NAO;
         } else {
-            return "Sim";
+            return SIM;
         }
     }
 

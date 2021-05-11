@@ -3,12 +3,15 @@ package com.example.demo.service.impl;
 import com.example.demo.domain.Pauta;
 import com.example.demo.repository.PautaRepository;
 import com.example.demo.service.PautaService;
-import com.example.demo.service.validator.PautaValidador;
 import com.example.demo.web.rest.dto.SessaoDTO;
+import com.example.demo.web.rest.exception.PautaNaoEncontradaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+
+import static com.example.demo.shared.Constantes.ABERTA;
+import static com.example.demo.shared.Constantes.PAUTA_NAO_ENCONTRADA_EXCEPTION;
 
 @Component
 public class PautaServiceImpl implements PautaService {
@@ -36,13 +39,13 @@ public class PautaServiceImpl implements PautaService {
     @Override
     public Pauta buscarPorId(Long id) {
         return pautaRepository.findById(id).orElseThrow(() -> {
-            throw new RuntimeException("Pauta não encontrada");
+            throw new PautaNaoEncontradaException(PAUTA_NAO_ENCONTRADA_EXCEPTION);
         });
     }
 
     @Override
     public List<Pauta> consultarPautasAbertas() {
-        return pautaRepository.findAllByStatus("ABERTA");
+        return pautaRepository.findAllByStatus(ABERTA);
     }
 
     @Override

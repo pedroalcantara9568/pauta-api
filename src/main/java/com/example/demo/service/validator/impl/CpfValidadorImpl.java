@@ -4,11 +4,14 @@ package com.example.demo.service.validator.impl;
 import com.example.demo.config.CpfConfig;
 import com.example.demo.service.validator.CpfValidador;
 import com.example.demo.web.rest.dto.CpfDTO;
+import com.example.demo.web.rest.exception.CpfInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import static com.example.demo.shared.Constantes.ABLE_TO_VOTE;
+import static com.example.demo.shared.Constantes.CPF_INVALIDO_EXCEPTION;
 import static java.lang.String.format;
 
 @Component
@@ -35,7 +38,7 @@ public class CpfValidadorImpl implements CpfValidador {
         try {
             return restTemplate.getForObject(uri, CpfDTO.class);
         } catch (HttpClientErrorException e) {
-            throw new RuntimeException("CPF inválido");
+            throw new CpfInvalidoException(CPF_INVALIDO_EXCEPTION);
         }
     }
 
@@ -44,6 +47,6 @@ public class CpfValidadorImpl implements CpfValidador {
     }
 
     private boolean ehApto(CpfDTO resposta) {
-        return resposta.getStatus().equals("ABLE_TO_VOTE");
+        return resposta.getStatus().equals(ABLE_TO_VOTE);
     }
 }

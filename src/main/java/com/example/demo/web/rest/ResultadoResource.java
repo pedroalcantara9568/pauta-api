@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.web.rest;
 
 import com.example.demo.service.ResultadoService;
 import com.example.demo.web.rest.dto.ResultadoDTO;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/resultados")
-public class ResultadoController {
+public class ResultadoResource {
 
     private final ResultadoService resultadoService;
 
     @Autowired
-    public ResultadoController(ResultadoService resultadoService) {
+    public ResultadoResource(ResultadoService resultadoService) {
         this.resultadoService = resultadoService;
     }
 

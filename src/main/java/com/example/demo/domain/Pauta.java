@@ -13,6 +13,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import static com.example.demo.shared.Constantes.ABERTA;
+import static com.example.demo.shared.Constantes.FECHADA;
 import static com.example.demo.shared.Utils.estaNuloOuVazio;
 import static javax.persistence.GenerationType.AUTO;
 
@@ -97,16 +99,16 @@ public class Pauta {
     }
 
     public boolean estahFechada() {
-        if(naoEstahAberta() || venceuTempoLimite()){
-            this.status = "FECHADA";
+        if (naoEstahAberta() || venceuTempoLimite()) {
+            this.status = FECHADA;
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
     private boolean naoEstahAberta() {
-        return !this.status.equals("ABERTA");
+        return !this.status.equals(ABERTA);
     }
 
     private boolean venceuTempoLimite() {
@@ -116,7 +118,7 @@ public class Pauta {
 
     public void obterStatus(Pauta pauta) {
         if (estaNuloOuVazio(pauta.getStatus())) {
-            this.status = "FECHADA";
+            this.status = FECHADA;
         }
     }
 }
