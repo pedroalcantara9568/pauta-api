@@ -33,6 +33,7 @@ public class PautaResourceTests {
 
     @BeforeEach
     public void setUp() {
+
         standaloneSetup(this.pautaResource);
     }
 

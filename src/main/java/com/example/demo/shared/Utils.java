@@ -8,20 +8,8 @@ public interface Utils {
         return estaNulo(valor) || estaVazio(valor);
     }
 
-    static boolean naoEstaNuloNemVazio(Object valor) {
-        return naoEstaNulo(valor) && naoEstaVazio(valor);
-    }
-
     static boolean estaNulo(Object valor) {
         return valor == null;
-    }
-
-    static boolean naoEstaNulo(Object valor) {
-        return !estaNulo(valor);
-    }
-
-    static boolean naoEstaVazio(Object valor) {
-        return !estaVazio(valor);
     }
 
     static boolean estaVazio(Object valor) {

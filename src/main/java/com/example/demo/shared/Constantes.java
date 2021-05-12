@@ -12,6 +12,9 @@ public class Constantes {
 
     public static final String ABLE_TO_VOTE = "ABLE_TO_VOTE";
 
+    public static final String UNABLE_TO_VOTE = "UNABLE_TO_VOTE";
+
+
     public static final String CPF_INVALIDO_EXCEPTION = "CPF inválido";
     public static final String VOTO_DUPLICADO_EXCEPTION = "Voto duplicado";
     public static final String SESSAO_FECHADA_EXCEPTION = "Sessão fechada!";

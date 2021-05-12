@@ -16,7 +16,7 @@ public class PautaTests {
 
 
     @Test
-    @DisplayName("Deve abrir Sessão com tempo informado")
+    @DisplayName("deve abrir Sessão com tempo informado")
     public void deveAbrirVotacao() {
         Pauta pauta = umaPautaFechada();
         SessaoDTO sessao = umaSessaoComUmMinuto();
@@ -27,7 +27,7 @@ public class PautaTests {
     }
 
     @Test
-    @DisplayName("Deve abrir Sessão com tempo padrão")
+    @DisplayName("deve abrir Sessão com tempo padrão")
     public void deveAbrirVotacaoComTempoPadrao() {
         Pauta pauta = umaPautaFechada();
         SessaoDTO sessao = umaSessaoSemMinuto();
@@ -46,7 +46,7 @@ public class PautaTests {
     }
 
     @Test
-    @DisplayName("Uma Sessão deve estar fechada")
+    @DisplayName("uma Sessão deve estar fechada")
     public void umaSessaoDeveEstarFechada() {
         Pauta pauta = umaPautaFechada();
 
@@ -54,7 +54,7 @@ public class PautaTests {
     }
 
     @Test
-    @DisplayName("Uma Sessão não Deve estar fechada")
+    @DisplayName("uma Sessão não Deve estar fechada")
     public void umaSessaoNaoDeveEstarFechada() {
         Pauta pauta = umaPautaAberta();
 

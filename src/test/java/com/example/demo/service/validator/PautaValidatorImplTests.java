@@ -18,7 +18,7 @@ import static com.example.demo.builders.pauta.PautaBuilder.umaPautaFechada;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 
-public class PautaValidatorImpl {
+public class PautaValidatorImplTests {
 
     @Autowired
     private PautaValidador pautaValidador;
@@ -30,7 +30,6 @@ public class PautaValidatorImpl {
     public void setUp() {
         pautaService = mock(PautaServiceImpl.class);
         pautaValidador = new PautaValidadorImpl(pautaService);
-
     }
 
     @Test

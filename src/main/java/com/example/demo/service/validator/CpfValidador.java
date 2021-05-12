@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CpfValidador {
 
-    boolean ehValido(String cpf);
+    void validar(String cpf);
 }

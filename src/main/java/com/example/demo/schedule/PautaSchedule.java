@@ -19,7 +19,7 @@ public class PautaSchedule {
     }
 
     @Scheduled(fixedDelay = 1000)
-    public void verificarTempoPautas() {
+    public void fecharPautaCasoVerdadeiro() {
         pautaService.consultarPautasAbertas().stream()
                 .filter(Pauta::estahFechada)
                 .forEach(pautaService::atualizarPauta);

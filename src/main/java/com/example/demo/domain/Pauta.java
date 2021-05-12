@@ -5,7 +5,6 @@ import com.example.demo.web.rest.dto.SessaoDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -19,7 +18,6 @@ import static com.example.demo.shared.Utils.estaNuloOuVazio;
 import static javax.persistence.GenerationType.AUTO;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
 @Entity(name = "PAUTA")
 public class Pauta {
@@ -48,24 +46,12 @@ public class Pauta {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
     public Set<Voto> getVotos() {
         return votos;
-    }
-
-    public void setVotos(Set<Voto> votos) {
-        this.votos = votos;
     }
 
     public String getStatus() {
@@ -78,10 +64,6 @@ public class Pauta {
 
     public LocalDateTime getTempoLimite() {
         return tempoLimite;
-    }
-
-    public void setTempoLimite(LocalDateTime tempoLimite) {
-        this.tempoLimite = tempoLimite;
     }
 
     public void abrirVotacao(SessaoDTO sessaoDTO) {

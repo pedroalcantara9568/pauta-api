@@ -27,10 +27,10 @@ public class CpfValidadorImpl implements CpfValidador {
     }
 
     @Override
-    public boolean ehValido(String cpf) {
+    public void validar(String cpf) {
         CpfDTO resposta = buscarCpf(cpf);
 
-        return ehApto(resposta);
+        ehApto(resposta);
     }
 
     private CpfDTO buscarCpf(String cpf) {
@@ -46,7 +46,9 @@ public class CpfValidadorImpl implements CpfValidador {
         return format(this.cpfConfig.getUrl(), cpf);
     }
 
-    private boolean ehApto(CpfDTO resposta) {
-        return resposta.getStatus().equals(ABLE_TO_VOTE);
+    private void ehApto(CpfDTO resposta) {
+        if (!resposta.getStatus().equals(ABLE_TO_VOTE)) {
+            throw new CpfInvalidoException(CPF_INVALIDO_EXCEPTION);
+        }
     }
 }
