@@ -3,7 +3,6 @@ package com.example.demo.resource;
 import com.example.demo.domain.Pauta;
 import com.example.demo.service.PautaService;
 import com.example.demo.web.rest.PautaResource;
-import com.example.demo.web.rest.dto.PautaDTO;
 import com.example.demo.web.rest.dto.SessaoDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,6 +14,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 
 import static com.example.demo.builders.SessaoDTOBuilder.umaSessaoComUmMinuto;
+import static com.example.demo.builders.pauta.PautaBuilder.umaPautaAberta;
 import static com.example.demo.builders.pauta.PautaBuilder.umaPautaFechada;
 import static com.example.demo.builders.pauta.PautaDTOBuilder.umaPautaDTO;
 import static io.restassured.http.ContentType.JSON;
@@ -31,42 +31,33 @@ public class PautaResourceTests {
     @MockBean
     private PautaService pautaService;
 
-    PautaDTO pautaDTO;
-
-    private Pauta pauta;
-
-    private SessaoDTO sessaoDTO;
-
     @BeforeEach
     public void setUp() {
-        pautaDTO = umaPautaDTO();
-        sessaoDTO = umaSessaoComUmMinuto();
-        pauta = umaPautaFechada();
         standaloneSetup(this.pautaResource);
     }
 
     @Test
     @DisplayName("deve cadastrar pauta com sucesso")
     public void deveCadastrarPautaComSucesso() {
-        Mockito.when(this.pautaService.cadastrar(any(Pauta.class))).thenReturn(pauta);
+        Mockito.when(this.pautaService.cadastrar(any(Pauta.class))).thenReturn(umaPautaFechada());
 
         given().contentType(JSON)
-                .body(pautaDTO)
+                .body(umaPautaDTO())
                 .when()
-                .post("/pautas", pautaDTO)
+                .post("/pautas", umaPautaDTO())
                 .then().log().all()
                 .statusCode(HttpStatus.CREATED.value());
     }
 
     @Test
-    @DisplayName("Deve abrir uma sessao em uma pauta")
-    public void deveAbrirUmaSessaoEmUmaPauta(){
-        Mockito.when(this.pautaService.abrirVotacao(any(SessaoDTO.class))).thenReturn(pauta);
+    @DisplayName("deve abrir uma sessao em uma pauta")
+    public void deveAbrirUmaSessaoEmUmaPauta() {
+        Mockito.when(this.pautaService.abrirVotacao(any(SessaoDTO.class))).thenReturn(umaPautaAberta());
 
         given().contentType(JSON)
-                .body(sessaoDTO)
+                .body(umaSessaoComUmMinuto())
                 .when()
-                .post("/pautas/abrir", sessaoDTO)
+                .post("/pautas/abrir", umaSessaoComUmMinuto())
                 .then().log().all()
                 .statusCode(HttpStatus.ACCEPTED.value());
     }

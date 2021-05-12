@@ -1,7 +1,8 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
 import com.example.demo.domain.Pauta;
 import com.example.demo.repository.PautaRepository;
+import com.example.demo.service.PautaService;
 import com.example.demo.service.impl.PautaServiceImpl;
 import com.example.demo.web.rest.dto.SessaoDTO;
 import com.example.demo.web.rest.exception.PautaNaoEncontradaException;
@@ -24,17 +25,13 @@ import static com.example.demo.builders.pauta.PautaBuilder.umaPautaFechada;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 
-public class PautaServiceTests {
+public class PautaServiceImplTests {
 
     @Autowired
     private PautaService pautaService;
 
     @MockBean
     private PautaRepository pautaRepository;
-
-    @Rule
-    public ExpectedException exception = ExpectedException.none();
-
 
     private Pauta pauta;
 

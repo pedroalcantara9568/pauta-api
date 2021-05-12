@@ -11,6 +11,7 @@ import static com.example.demo.shared.Constantes.FECHADA;
 public class PautaBuilder {
     public static Pauta umaPautaFechada() {
         return Pauta.builder()
+                .id(1L)
                 .titulo("coxinha > all")
                 .tempoLimite(LocalDateTime.now())
                 .status(FECHADA).build();
@@ -24,6 +25,8 @@ public class PautaBuilder {
 
     public static Pauta umaPautaAberta() {
         return Pauta.builder()
+                .id(1L)
+                .titulo("coxinha > all")
                 .status(ABERTA)
                 .tempoLimite(LocalDateTime.now().plusMinutes(2))
                 .build();
