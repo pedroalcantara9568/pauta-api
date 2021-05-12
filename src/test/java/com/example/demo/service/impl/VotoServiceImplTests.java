@@ -11,7 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
 
@@ -21,18 +20,15 @@ import static org.mockito.Mockito.mock;
 
 public class VotoServiceImplTests {
 
-    @Autowired
     private VotoService votoService;
 
-    @Autowired
     private VotoRepository votoRepository;
 
-    @Autowired
     private VotoValidador votoValidador;
 
     private PautaValidador pautaValidador;
 
-    Voto voto;
+    private Voto voto;
 
     @BeforeEach
     public void setUp() {

@@ -8,8 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static com.example.demo.builders.pauta.PautaBuilder.*;
 import static com.example.demo.shared.Constantes.*;
@@ -18,11 +16,8 @@ import static org.mockito.Mockito.mock;
 
 public class ResultadoServiceImplTests {
 
-
-    @Autowired
     private ResultadoService resultadoService;
 
-    @MockBean
     private PautaService pautaService;
 
     @BeforeEach

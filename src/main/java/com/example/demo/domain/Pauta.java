@@ -5,6 +5,7 @@ import com.example.demo.web.rest.dto.SessaoDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -18,6 +19,7 @@ import static com.example.demo.shared.Utils.estaNuloOuVazio;
 import static javax.persistence.GenerationType.AUTO;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity(name = "PAUTA")
 public class Pauta {

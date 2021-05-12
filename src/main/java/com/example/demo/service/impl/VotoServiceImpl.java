@@ -6,6 +6,7 @@ import com.example.demo.repository.VotoRepository;
 import com.example.demo.service.VotoService;
 import com.example.demo.service.validator.PautaValidador;
 import com.example.demo.service.validator.VotoValidador;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -17,6 +18,7 @@ public class VotoServiceImpl implements VotoService {
     private final VotoValidador votoValidador;
     private final PautaValidador pautaValidador;
 
+    @Autowired
     public VotoServiceImpl(VotoRepository votoRepository,
                            VotoValidador votoValidador,
                            PautaValidador pautaValidador) {

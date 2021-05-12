@@ -1,6 +1,8 @@
 package com.example.demo.service.validator;
 
 import com.example.demo.domain.voto.Voto;
+import com.example.demo.domain.voto.VotoPK;
+import com.example.demo.repository.VotoRepository;
 import com.example.demo.service.VotoService;
 import com.example.demo.service.impl.VotoServiceImpl;
 import com.example.demo.service.validator.impl.VotoValidadorImpl;
@@ -29,19 +31,19 @@ public class VotoValidadorImplTests {
     private CpfValidador cpfValidador;
 
     @MockBean
-    private VotoService votoService;
+    private VotoRepository votoRepository;
 
     @BeforeEach
     public void setUp() {
         cpfValidador = mock(CpfValidador.class);
-        votoService = mock(VotoServiceImpl.class);
-        this.votoValidador = new VotoValidadorImpl(votoService, cpfValidador);
+        votoRepository = mock(VotoRepository.class);
+        this.votoValidador = new VotoValidadorImpl(votoRepository, cpfValidador);
     }
 
     @Test
     @DisplayName("não deve lançar exceção ao validar CPF")
     public void naoDeveLancarExcecaoAoValidar(){
-        Mockito.when(this.votoService.buscarPorId(any(Voto.class))).thenReturn(Optional.empty());
+        Mockito.when(this.votoRepository.findById(any(VotoPK.class))).thenReturn(Optional.empty());
 
         votoValidador.validar(umVoto());
     }
@@ -49,7 +51,7 @@ public class VotoValidadorImplTests {
     @Test
     @DisplayName("deve lançar exceção ao validar voto duplicado")
     public void deveLancarExcecaoAoValidarVotoDuplicado(){
-        Mockito.when(this.votoService.buscarPorId(any(Voto.class))).thenReturn(Optional.of(umVoto()));
+        Mockito.when(this.votoRepository.findById(any(VotoPK.class))).thenReturn(Optional.of(umVoto()));
 
         Assertions.assertThrows(VotoDuplicadoException.class, ()->{
             votoValidador.validar(umVoto());
