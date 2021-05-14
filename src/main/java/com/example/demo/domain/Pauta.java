@@ -15,7 +15,7 @@ import java.util.Set;
 
 import static com.example.demo.shared.Constantes.ABERTA;
 import static com.example.demo.shared.Constantes.FECHADA;
-import static com.example.demo.shared.Utils.estaNuloOuVazio;
+import static com.example.demo.shared.Util.estaNuloOuVazio;
 import static javax.persistence.GenerationType.AUTO;
 
 @AllArgsConstructor
@@ -44,6 +44,17 @@ public class Pauta {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime tempoLimite;
 
+    public boolean naoFoiEnviada() {
+        return !this.enviadoKafka;
+    }
+
+    public void setEnviadoKafka(boolean enviadoKafka) {
+        this.enviadoKafka = enviadoKafka;
+    }
+
+    @Column(columnDefinition = "boolean default false")
+    private boolean enviadoKafka;
+
     public Long getId() {
         return id;
     }
@@ -60,16 +71,13 @@ public class Pauta {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public LocalDateTime getTempoLimite() {
         return tempoLimite;
     }
 
     public void abrirVotacao(SessaoDTO sessaoDTO) {
         this.status = "ABERTA";
+        this.enviadoKafka = false;
         LocalDateTime dthLimite = obterTempoFinal(sessaoDTO);
         this.tempoLimite = dthLimite;
     }
@@ -89,6 +97,10 @@ public class Pauta {
         } else {
             return false;
         }
+    }
+
+    public boolean estahFechadaIhNaoFoiEnviada() {
+            return estahFechada() && naoFoiEnviada();
     }
 
     private boolean naoEstahAberta() {

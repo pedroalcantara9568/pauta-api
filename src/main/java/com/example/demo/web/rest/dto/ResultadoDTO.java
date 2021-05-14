@@ -31,4 +31,5 @@ public class ResultadoDTO implements Serializable {
 
     @JsonProperty("resultado")
     private String resultado;
+
 }

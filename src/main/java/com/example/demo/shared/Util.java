@@ -2,7 +2,7 @@ package com.example.demo.shared;
 
 import java.util.Collection;
 
-public interface Utils {
+public interface Util {
 
     static boolean estaNuloOuVazio(Object valor) {
         return estaNulo(valor) || estaVazio(valor);

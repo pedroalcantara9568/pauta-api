@@ -4,7 +4,6 @@ import com.example.demo.domain.Pauta;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 import static com.example.demo.builders.voto.VotoBuilder.umVoto;
 import static com.example.demo.shared.Constantes.*;
@@ -17,6 +16,13 @@ public class PautaBuilder {
                 .titulo("coxinha > all")
                 .tempoLimite(LocalDateTime.now())
                 .status(FECHADA).build();
+    }
+
+    public static Pauta umaPautaFechadaIhNaoEnviada() {
+        return Pauta.builder()
+                .enviadoKafka(false)
+                .status(FECHADA)
+                .build();
     }
 
     public static Pauta umaPautaSemStatus() {
@@ -38,31 +44,31 @@ public class PautaBuilder {
         return List.of(umaPautaAberta());
     }
 
-    public static Pauta umaPautaComMaisVotosSim(){
+    public static Pauta umaPautaComMaisVotosSim() {
         return Pauta.builder()
                 .id(1L)
                 .titulo("coxinha > all")
-                .votos(of(umVoto(SIM),umVoto(SIM),umVoto(SIM),umVoto(NAO),umVoto(NAO)))
+                .votos(of(umVoto(SIM), umVoto(SIM), umVoto(SIM), umVoto(NAO), umVoto(NAO)))
                 .tempoLimite(LocalDateTime.now().minusMinutes(1))
                 .status(FECHADA)
                 .build();
     }
 
-    public static Pauta umaPautaEmpatada(){
+    public static Pauta umaPautaEmpatada() {
         return Pauta.builder()
                 .id(1L)
                 .titulo("coxinha > all")
-                .votos(of(umVoto(SIM),umVoto(SIM),umVoto(SIM),umVoto(NAO),umVoto(NAO),umVoto(NAO)))
+                .votos(of(umVoto(SIM), umVoto(SIM), umVoto(SIM), umVoto(NAO), umVoto(NAO), umVoto(NAO)))
                 .tempoLimite(LocalDateTime.now().minusMinutes(1))
                 .status(FECHADA)
                 .build();
     }
 
-    public static Pauta umaPautaComMaisVotosNao(){
+    public static Pauta umaPautaComMaisVotosNao() {
         return Pauta.builder()
                 .id(1L)
                 .titulo("coxinha > all")
-                .votos(of(umVoto(SIM),umVoto(SIM),umVoto(NAO),umVoto(NAO),umVoto(NAO)))
+                .votos(of(umVoto(SIM), umVoto(SIM), umVoto(NAO), umVoto(NAO), umVoto(NAO)))
                 .tempoLimite(LocalDateTime.now().minusMinutes(1))
                 .status(FECHADA)
                 .build();
