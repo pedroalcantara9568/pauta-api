@@ -1,5 +1,6 @@
 package com.example.demo.web.rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,6 +14,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Builder
 public class CpfDTO implements Serializable {
-
+    @JsonProperty("status")
     private String status;
 }
