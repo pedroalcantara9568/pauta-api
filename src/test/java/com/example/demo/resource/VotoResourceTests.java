@@ -39,6 +39,7 @@ public class VotoResourceTests {
         Mockito.when(this.votoService.cadastrar(any(Voto.class))).thenReturn(umVoto());
 
         given().contentType(JSON)
+                .header("Api-Version", 1)
                 .body(umVotoDTO())
                 .when()
                 .post("/votos", umVotoDTO())

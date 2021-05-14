@@ -48,6 +48,7 @@ public class Voto {
     public String toString() {
         return "Voto{" +
                 "idPauta=" + idPauta +
+                ", idCooperado=" + idCooperado +
                 ", cpf='" + cpf + '\'' +
                 ", voto='" + voto + '\'' +
                 '}';

@@ -37,6 +37,7 @@ public class ResultadoResourceTests {
         Mockito.when(resultadoService.obterResultado(any(Long.class))).thenReturn(umResultadoDTO());
 
         given()
+                .header("Api-Version", 1)
                 .accept(JSON)
                 .when()
                 .get("/resultados/{id}", 1L)

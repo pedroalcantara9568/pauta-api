@@ -43,7 +43,7 @@ public class VotoValidadorImpl implements VotoValidador {
 
     private VotoPK obterVotoId(Voto voto) {
         return VotoPK.builder()
-                .idCooperado(1L)
+                .idCooperado(voto.getIdCooperado())
                 .idPauta(voto.getIdPauta())
                 .build();
     }

@@ -21,7 +21,7 @@ public class ResultadoResource {
         this.resultadoService = resultadoService;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", headers = "Api-Version=1")
     public ResponseEntity<Object> obterResultado(@PathVariable Long id) {
         ResultadoDTO resultadoDTO = resultadoService.obterResultado(id);
         return new ResponseEntity<>(resultadoDTO, HttpStatus.OK);

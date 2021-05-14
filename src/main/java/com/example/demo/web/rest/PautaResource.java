@@ -26,13 +26,13 @@ public class PautaResource {
         this.pautaService = pautaService;
     }
 
-    @PostMapping
+    @PostMapping(headers = "Api-Version=1")
     public ResponseEntity<Object> cadastrar(@RequestBody PautaDTO pautaDTO) {
         Pauta pautaCadastrada = pautaService.cadastrar(PautaMapper.toEntity(pautaDTO));
         return new ResponseEntity<>(toDto(pautaCadastrada), HttpStatus.CREATED);
     }
 
-    @PostMapping("/abrir")
+    @PostMapping(value = "/abrir", headers = "Api-Version=1")
     public ResponseEntity<Object> abrirVotacao(@RequestBody SessaoDTO sessaoDTO) {
         Pauta pautaAberta = pautaService.abrirVotacao(sessaoDTO);
         return new ResponseEntity<>(toDto(pautaAberta), HttpStatus.ACCEPTED);

@@ -23,7 +23,7 @@ public class VotoResource {
         this.votoService = votoService;
     }
 
-    @PostMapping
+    @PostMapping(headers = "Api-Version=1")
     public ResponseEntity<Object> cadastrar(@RequestBody VotoDTO votoDTO) {
         Voto votoCadastrado = votoService.cadastrar(VotoMapper.toEntity(votoDTO));
         return new ResponseEntity<>(VotoMapper.toDto(votoCadastrado), HttpStatus.CREATED);

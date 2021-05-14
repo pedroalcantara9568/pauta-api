@@ -42,6 +42,7 @@ public class PautaResourceTests {
         Mockito.when(this.pautaService.cadastrar(any(Pauta.class))).thenReturn(umaPautaFechada());
 
         given().contentType(JSON)
+                .header("Api-Version", 1)
                 .body(umaPautaDTO())
                 .when()
                 .post("/pautas", umaPautaDTO())
@@ -55,6 +56,7 @@ public class PautaResourceTests {
         Mockito.when(this.pautaService.abrirVotacao(any(SessaoDTO.class))).thenReturn(umaPautaAberta());
 
         given().contentType(JSON)
+                .header("Api-Version", 1)
                 .body(umaSessaoComUmMinuto())
                 .when()
                 .post("/pautas/abrir", umaSessaoComUmMinuto())
