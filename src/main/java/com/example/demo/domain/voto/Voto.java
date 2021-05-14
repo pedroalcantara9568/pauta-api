@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @IdClass(VotoPK.class)
 @Entity(name = "VOTO")
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"CPF", "VOTO"})})
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"ID_COOPERADO", "ID_PAUTA"})})
 public class Voto {
 
     @Id
@@ -19,11 +19,18 @@ public class Voto {
     private Long idPauta;
 
     @Id
+    @Column(name = "ID_COOPERADO")
+    private Long idCooperado;
+
     @Column(name = "CPF")
     private String cpf;
 
     @Column(name = "VOTO")
     private String voto;
+
+    public Long getIdCooperado() {
+        return idCooperado;
+    }
 
     public Long getIdPauta() {
         return idPauta;
@@ -35,5 +42,14 @@ public class Voto {
 
     public String getVoto() {
         return voto;
+    }
+
+    @Override
+    public String toString() {
+        return "Voto{" +
+                "idPauta=" + idPauta +
+                ", cpf='" + cpf + '\'' +
+                ", voto='" + voto + '\'' +
+                '}';
     }
 }

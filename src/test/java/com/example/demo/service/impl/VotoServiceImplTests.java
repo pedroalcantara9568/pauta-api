@@ -59,6 +59,5 @@ public class VotoServiceImplTests {
         Optional<Voto> esperado = votoService.buscarPorId(umVoto());
 
         Assertions.assertTrue(esperado.isPresent());
-
     }
 }

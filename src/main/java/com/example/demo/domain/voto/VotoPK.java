@@ -12,5 +12,5 @@ import java.io.Serializable;
 public class VotoPK implements Serializable {
 
     private Long idPauta;
-    private String cpf;
+    private Long idCooperado;
 }

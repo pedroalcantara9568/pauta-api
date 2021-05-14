@@ -5,6 +5,8 @@ import com.example.demo.domain.voto.Voto;
 import com.example.demo.service.PautaService;
 import com.example.demo.service.ResultadoService;
 import com.example.demo.web.rest.dto.ResultadoDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +19,8 @@ import static com.example.demo.shared.Constantes.*;
 @Component
 public class ResultadoServiceImpl implements ResultadoService {
 
+    private static final Logger logger = LoggerFactory.getLogger(ResultadoServiceImpl.class);
+
     private final PautaService pautaService;
 
     @Autowired
@@ -26,6 +30,7 @@ public class ResultadoServiceImpl implements ResultadoService {
 
     @Override
     public ResultadoDTO obterResultado(Long id) {
+        logger.info("obtendo resultado de pauta numero: " + id);
         Pauta pauta = pautaService.buscarPorId(id);
         return construirResultado(pauta);
     }

@@ -1,13 +1,11 @@
 package com.example.demo.web.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
+@Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,4 +30,15 @@ public class ResultadoDTO implements Serializable {
     @JsonProperty("resultado")
     private String resultado;
 
+    @Override
+    public String toString() {
+        return "ResultadoDTO{" +
+                "seqPauta=" + seqPauta +
+                ", titulo='" + titulo + '\'' +
+                ", status='" + status + '\'' +
+                ", quantidadeSim=" + quantidadeSim +
+                ", quantidadeNao=" + quantidadeNao +
+                ", resultado='" + resultado + '\'' +
+                '}';
+    }
 }

@@ -8,6 +8,7 @@ public class VotoMapper {
         return Voto.builder()
                 .cpf(votoDTO.getCpf())
                 .idPauta(votoDTO.getIdPauta())
+                .idCooperado(votoDTO.getIdCooperado())
                 .voto(votoDTO.getVoto())
                 .build();
     }
@@ -16,6 +17,7 @@ public class VotoMapper {
         return VotoDTO.builder()
                 .cpf(voto.getCpf())
                 .idPauta(voto.getIdPauta())
+                .idCooperado(voto.getIdCooperado())
                 .voto(voto.getVoto())
                 .build();
     }

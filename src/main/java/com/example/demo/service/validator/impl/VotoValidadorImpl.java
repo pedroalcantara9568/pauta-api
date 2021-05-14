@@ -6,6 +6,8 @@ import com.example.demo.repository.VotoRepository;
 import com.example.demo.service.validator.CpfValidador;
 import com.example.demo.service.validator.VotoValidador;
 import com.example.demo.web.rest.exception.VotoDuplicadoException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,8 @@ import static com.example.demo.shared.Constantes.VOTO_DUPLICADO_EXCEPTION;
 
 @Component
 public class VotoValidadorImpl implements VotoValidador {
+
+    private static final Logger logger = LoggerFactory.getLogger(VotoValidadorImpl.class);
 
     private final VotoRepository votoRepository;
     private final CpfValidador cpfValidador;
@@ -28,6 +32,7 @@ public class VotoValidadorImpl implements VotoValidador {
 
     @Override
     public void validar(Voto voto) {
+        logger.info("validando voto: " + voto);
         Optional<Voto> votoConsultado = votoRepository.findById(obterVotoId(voto));
 
         if (votoConsultado.isPresent()) {
@@ -38,7 +43,7 @@ public class VotoValidadorImpl implements VotoValidador {
 
     private VotoPK obterVotoId(Voto voto) {
         return VotoPK.builder()
-                .cpf(voto.getCpf())
+                .idCooperado(1L)
                 .idPauta(voto.getIdPauta())
                 .build();
     }

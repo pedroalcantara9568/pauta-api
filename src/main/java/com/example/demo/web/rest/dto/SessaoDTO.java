@@ -15,4 +15,12 @@ public class SessaoDTO {
 
     @JsonProperty("minutos")
     private Integer minutos;
+
+    @Override
+    public String toString() {
+        return "SessaoDTO{" +
+                "idPauta=" + idPauta +
+                ", minutos=" + minutos +
+                '}';
+    }
 }

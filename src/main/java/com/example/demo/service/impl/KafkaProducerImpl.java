@@ -19,6 +19,7 @@ public class KafkaProducerImpl implements KafkaProducerService {
 
     @Override
     public void writeMessage(String message) {
+
         this.kafkaTemplate.send(TOPIC, message);
     }
 }

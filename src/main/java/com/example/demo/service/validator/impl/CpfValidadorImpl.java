@@ -2,9 +2,12 @@ package com.example.demo.service.validator.impl;
 
 
 import com.example.demo.config.CpfConfig;
+import com.example.demo.service.impl.PautaServiceImpl;
 import com.example.demo.service.validator.CpfValidador;
 import com.example.demo.web.rest.dto.CpfDTO;
 import com.example.demo.web.rest.exception.CpfInvalidoException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
@@ -17,6 +20,9 @@ import static java.lang.String.format;
 @Component
 public class CpfValidadorImpl implements CpfValidador {
 
+
+    private static final Logger logger = LoggerFactory.getLogger(CpfValidadorImpl.class);
+
     private final CpfConfig cpfConfig;
     private final RestTemplate restTemplate;
 
@@ -28,6 +34,7 @@ public class CpfValidadorImpl implements CpfValidador {
 
     @Override
     public void validar(String cpf) {
+        logger.info("validando CPF: " +cpf);
         CpfDTO resposta = buscarCpf(cpf);
 
         ehApto(resposta);

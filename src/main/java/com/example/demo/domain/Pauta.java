@@ -100,7 +100,7 @@ public class Pauta {
     }
 
     public boolean estahFechadaIhNaoFoiEnviada() {
-            return estahFechada() && naoFoiEnviada();
+        return estahFechada() && naoFoiEnviada();
     }
 
     private boolean naoEstahAberta() {
@@ -116,5 +116,17 @@ public class Pauta {
         if (estaNuloOuVazio(pauta.getStatus())) {
             this.status = FECHADA;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Pauta{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", votos=" + votos +
+                ", status='" + status + '\'' +
+                ", tempoLimite=" + tempoLimite +
+                ", enviadoKafka=" + enviadoKafka +
+                '}';
     }
 }

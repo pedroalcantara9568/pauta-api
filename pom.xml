@@ -110,6 +110,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>desafio-pauta</finalName>
     </build>
 
 </project>

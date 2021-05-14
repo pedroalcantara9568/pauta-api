@@ -12,6 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import static com.example.demo.shared.Constantes.FECHADA;
 import static com.example.demo.shared.JsonUtil.toJson;
 
 @Component
@@ -37,9 +38,8 @@ public class PautaSchedule {
     public void fecharPautaCasoVerdadeiro() {
         pautaService.consultarPautasAbertas().stream()
                 .filter(Pauta::estahFechadaIhNaoFoiEnviada).forEach(pauta -> {
-
             ResultadoDTO resultadoDTO = resultadoService.obterResultado(pauta.getId());
-
+            atulizarResultado(resultadoDTO);
             logger.info("Enviando resultado :" + resultadoDTO);
             kafkaProducerService.writeMessage(toJson(resultadoDTO));
 
@@ -47,6 +47,10 @@ public class PautaSchedule {
             sinalizarEnvioPauta(pauta);
             pautaService.atualizarPauta(pauta);
         });
+    }
+
+    private void atulizarResultado(ResultadoDTO resultadoDTO) {
+        resultadoDTO.setStatus(FECHADA);
     }
 
     private void sinalizarEnvioPauta(Pauta pauta) {

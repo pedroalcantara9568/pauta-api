@@ -1,12 +1,21 @@
 version: '3'
 
 services:
+  pauta-api:
+    container_name: desafio-pauta-api
+    image: desafio-pauta:latest
+    ports:
+      - 8080:8080
+    depends_on:
+      - kafka
+    links:
+      - kafka
 
   zookeeper:
     image: wurstmeister/zookeeper
     container_name: zookeeper
     networks:
-      - frontend
+      - messages
     ports:
       - "2181:2181"
 
@@ -14,7 +23,7 @@ services:
     image: wurstmeister/kafka
     container_name: kafka
     networks:
-      - frontend
+      - messages
     ports:
       - "9092:9092"
     environment:
@@ -22,6 +31,6 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
 
 networks:
-  frontend:
-    name: custom_frontend
+  messages:
+    name: messages
 
