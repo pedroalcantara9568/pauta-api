@@ -1,0 +1,100 @@
+{
+"info": {
+"_postman_id": "d3ac0119-d201-49a5-8f5d-c3624ddf3ddb",
+"name": "desafio-pauta",
+"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+},
+"item": [
+{
+"name": "criar pauta",
+"id": "7bb0f760-a4d0-42f4-b166-58c4492ca096",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Api-Version",
+"value": "1",
+"type": "text"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n  \"titulo\": \"titulo da pauta\"\n}\n",
+"options": {
+"raw": {
+"language": "json"
+}
+}
+},
+"url": "localhost:8080/pautas/"
+},
+"response": []
+},
+{
+"name": "abrir sessão",
+"id": "f3c7c1ac-2aa2-4f51-adc2-1e67c891663d",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Api-Version",
+"value": "1",
+"type": "text"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    \"id_pauta\": 1,\n    \"minutos\": 4\n}",
+"options": {
+"raw": {
+"language": "json"
+}
+}
+},
+"url": "http://localhost:8080/pautas/abrir"
+},
+"response": []
+},
+{
+"name": "votar em uma pauta",
+"id": "e1649f30-6296-4592-99a9-fe249ea63128",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Api-Version",
+"value": "1",
+"type": "text"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    \"id_pauta\": 1,\n    \"id_cooperado\": 5,\n    \"cpf\": \"10338927425\",\n    \"voto\": \"Sim\"\n}",
+"options": {
+"raw": {
+"language": "json"
+}
+}
+},
+"url": "http://localhost:8080/votos"
+},
+"response": []
+},
+{
+"name": "obter resultado pauta",
+"id": "189d75d2-c4a4-4c67-9911-cfcfd57fbbfa",
+"request": {
+"method": "GET",
+"header": [
+{
+"key": "Api-Version",
+"value": "1",
+"type": "text"
+}
+],
+"url": "http://localhost:8080/resultados/1"
+},
+"response": []
+}
+]
+}
