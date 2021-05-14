@@ -27,6 +27,14 @@ public class PautaTests {
     }
 
     @Test
+    @DisplayName("deve estar fechada e nao enviada")
+    public void deveEstarFechadaIhNaoEnviada() {
+        Pauta pauta = umaPautaFechadaIhNaoEnviada();
+
+        Assertions.assertTrue(pauta.estahFechadaIhNaoFoiEnviada());
+    }
+
+    @Test
     @DisplayName("deve abrir Sessão com tempo padrão")
     public void deveAbrirVotacaoComTempoPadrao() {
         Pauta pauta = umaPautaFechada();
