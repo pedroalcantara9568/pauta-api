@@ -16,6 +16,15 @@ docker -v
 Docker version 19.03.13, build 4484c46
   ````
 
+- #### docker-compose
+
+````
+docker-compose -v
+
+docker-compose version 1.27.4, build unknown
+  ````
+
+
 - #### Java 11
 ````
 java -version
