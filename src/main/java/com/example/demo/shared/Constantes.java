@@ -13,6 +13,7 @@ public class Constantes {
 
     public static final String CPF_INVALIDO_EXCEPTION = "CPF inválido";
     public static final String VOTO_DUPLICADO_EXCEPTION = "Voto duplicado";
+    public static final String VOTO_INVALIDO_EXCEPTION = "Opção de voto inválido! as Opções são: Sim/Não";
     public static final String SESSAO_FECHADA_EXCEPTION = "Sessão fechada!";
     public static final String PAUTA_NAO_ENCONTRADA_EXCEPTION = "Pauta não encontrada!";
 }

@@ -14,7 +14,6 @@ import java.util.List;
 
 import static com.example.demo.shared.Constantes.ABERTA;
 import static com.example.demo.shared.Constantes.PAUTA_NAO_ENCONTRADA_EXCEPTION;
-import static com.example.demo.shared.JsonUtil.toJson;
 
 @Component
 public class PautaServiceImpl implements PautaService {

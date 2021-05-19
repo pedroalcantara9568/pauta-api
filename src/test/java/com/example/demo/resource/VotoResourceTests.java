@@ -3,6 +3,7 @@ package com.example.demo.resource;
 import com.example.demo.domain.voto.Voto;
 import com.example.demo.service.VotoService;
 import com.example.demo.web.rest.VotoResource;
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import org.springframework.http.HttpStatus;
 
 import static com.example.demo.builders.voto.VotoBuilder.umVoto;
 import static com.example.demo.builders.voto.VotoDTOBuilder.umVotoDTO;
+import static io.restassured.config.DecoderConfig.decoderConfig;
 import static io.restassured.http.ContentType.JSON;
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.standaloneSetup;
@@ -46,5 +48,4 @@ public class VotoResourceTests {
                 .then().log().all()
                 .statusCode(HttpStatus.CREATED.value());
     }
-
 }
