@@ -18,6 +18,14 @@ public class PautaBuilder {
                 .status(FECHADA).build();
     }
 
+    public static Pauta umaPautaFechadaPorTempo() {
+        return Pauta.builder()
+                .id(1L)
+                .titulo("coxinha > all")
+                .tempoLimite(LocalDateTime.now().minusMinutes(1))
+                .status(ABERTA).build();
+    }
+
     public static Pauta umaPautaFechadaIhNaoEnviada() {
         return Pauta.builder()
                 .enviadoKafka(false)

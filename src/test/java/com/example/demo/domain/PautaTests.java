@@ -1,11 +1,14 @@
 package com.example.demo.domain;
 
+import com.example.demo.builders.SessaoDTOBuilder;
 import com.example.demo.web.rest.dto.SessaoDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.example.demo.builders.SessaoDTOBuilder.umaSessaoComUmMinuto;
+import java.time.LocalDateTime;
+
+import static com.example.demo.builders.SessaoDTOBuilder.umaSessaoComMinuto;
 import static com.example.demo.builders.SessaoDTOBuilder.umaSessaoSemMinuto;
 import static com.example.demo.builders.pauta.PautaBuilder.*;
 import static com.example.demo.shared.Constantes.ABERTA;
@@ -19,11 +22,26 @@ public class PautaTests {
     @DisplayName("deve abrir Sessão com tempo informado")
     public void deveAbrirVotacao() {
         Pauta pauta = umaPautaFechada();
-        SessaoDTO sessao = umaSessaoComUmMinuto();
+        SessaoDTO sessao = umaSessaoComMinuto(15);
 
-        pauta.abrirVotacao(sessao);
+        LocalDateTime dataHoraLimite = pauta.abrirVotacao(sessao);
 
         Assertions.assertEquals(pauta.getStatus(), ABERTA);
+        Assertions.assertEquals(pauta.getTempoLimite(), dataHoraLimite);
+        Assertions.assertEquals(pauta.isEnviadoKafka(), false);
+    }
+
+    @Test
+    @DisplayName("deve abrir Sessão com tempo padrão")
+    public void deveAbrirVotacaoComTempoPadrão() {
+        Pauta pauta = umaPautaFechada();
+        SessaoDTO sessao = SessaoDTOBuilder.umaSessaoSemMinuto();
+
+        LocalDateTime dataHoraLimite = pauta.abrirVotacao(sessao);
+
+        Assertions.assertEquals(pauta.getStatus(), ABERTA);
+        Assertions.assertEquals(pauta.getTempoLimite(), dataHoraLimite);
+        Assertions.assertEquals(pauta.isEnviadoKafka(), false);
     }
 
     @Test
@@ -32,16 +50,6 @@ public class PautaTests {
         Pauta pauta = umaPautaFechadaIhNaoEnviada();
 
         Assertions.assertTrue(pauta.estahFechadaIhNaoFoiEnviada());
-    }
-
-    @Test
-    @DisplayName("deve abrir Sessão com tempo padrão")
-    public void deveAbrirVotacaoComTempoPadrao() {
-        Pauta pauta = umaPautaFechada();
-        SessaoDTO sessao = umaSessaoSemMinuto();
-        pauta.abrirVotacao(sessao);
-
-        Assertions.assertEquals(pauta.getStatus(), ABERTA);
     }
 
     @Test
@@ -54,7 +62,7 @@ public class PautaTests {
     }
 
     @Test
-    @DisplayName("uma Sessão deve estar fechada")
+    @DisplayName("uma Pauta deve estar fechada")
     public void umaSessaoDeveEstarFechada() {
         Pauta pauta = umaPautaFechada();
 
@@ -62,7 +70,15 @@ public class PautaTests {
     }
 
     @Test
-    @DisplayName("uma Sessão não Deve estar fechada")
+    @DisplayName("uma Pauta deve estar fechada por tempo")
+    public void umaSessaoDeveEstarFechadaPorTempo() {
+        Pauta pauta = umaPautaFechadaPorTempo();
+
+        Assertions.assertTrue(pauta.estahFechada());
+    }
+
+    @Test
+    @DisplayName("uma Pauta não Deve estar fechada")
     public void umaSessaoNaoDeveEstarFechada() {
         Pauta pauta = umaPautaAberta();
 

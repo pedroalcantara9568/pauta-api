@@ -7,10 +7,16 @@ import static com.example.demo.shared.Constantes.FECHADA;
 
 public class SessaoDTOBuilder {
 
-    public static SessaoDTO umaSessaoComUmMinuto(){
+    public static SessaoDTO umaSessaoComMinuto(){
         return SessaoDTO.builder()
                 .idPauta(1L)
-                .minutos(3)
+                .minutos(1)
+                .build();
+    }
+    public static SessaoDTO umaSessaoComMinuto(Integer minutos){
+        return SessaoDTO.builder()
+                .idPauta(1L)
+                .minutos(minutos)
                 .build();
     }
 

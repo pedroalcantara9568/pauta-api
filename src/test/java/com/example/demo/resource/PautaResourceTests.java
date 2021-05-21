@@ -13,7 +13,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 
-import static com.example.demo.builders.SessaoDTOBuilder.umaSessaoComUmMinuto;
+import static com.example.demo.builders.SessaoDTOBuilder.umaSessaoComMinuto;
 import static com.example.demo.builders.pauta.PautaBuilder.umaPautaAberta;
 import static com.example.demo.builders.pauta.PautaBuilder.umaPautaFechada;
 import static com.example.demo.builders.pauta.PautaDTOBuilder.umaPautaDTO;
@@ -57,9 +57,9 @@ public class PautaResourceTests {
 
         given().contentType(JSON)
                 .header("Api-Version", 1)
-                .body(umaSessaoComUmMinuto())
+                .body(umaSessaoComMinuto())
                 .when()
-                .post("/pautas/abrir", umaSessaoComUmMinuto())
+                .post("/pautas/abrir", umaSessaoComMinuto())
                 .then().log().all()
                 .statusCode(HttpStatus.ACCEPTED.value());
     }

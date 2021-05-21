@@ -14,7 +14,7 @@ import org.mockito.Mockito;
 import java.util.List;
 import java.util.Optional;
 
-import static com.example.demo.builders.SessaoDTOBuilder.umaSessaoComUmMinuto;
+import static com.example.demo.builders.SessaoDTOBuilder.umaSessaoComMinuto;
 import static com.example.demo.builders.pauta.PautaBuilder.umaListaDePautas;
 import static com.example.demo.builders.pauta.PautaBuilder.umaPautaFechada;
 import static org.mockito.ArgumentMatchers.any;
@@ -31,7 +31,7 @@ public class PautaServiceImplTests {
     @BeforeEach
     public void setUp() {
         pauta = umaPautaFechada();
-        sessaoDTO = umaSessaoComUmMinuto();
+        sessaoDTO = umaSessaoComMinuto();
         pautas = umaListaDePautas();
 
         pautaRepository = mock(PautaRepository.class);

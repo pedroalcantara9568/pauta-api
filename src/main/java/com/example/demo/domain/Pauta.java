@@ -48,6 +48,10 @@ public class Pauta {
         return !this.enviadoKafka;
     }
 
+    public boolean isEnviadoKafka() {
+        return enviadoKafka;
+    }
+
     public void setEnviadoKafka(boolean enviadoKafka) {
         this.enviadoKafka = enviadoKafka;
     }
@@ -75,11 +79,10 @@ public class Pauta {
         return tempoLimite;
     }
 
-    public void abrirVotacao(SessaoDTO sessaoDTO) {
+    public LocalDateTime abrirVotacao(SessaoDTO sessaoDTO) {
         this.status = "ABERTA";
         this.enviadoKafka = false;
-        LocalDateTime dthLimite = obterTempoFinal(sessaoDTO);
-        this.tempoLimite = dthLimite;
+        return this.tempoLimite = obterTempoFinal(sessaoDTO);
     }
 
     private LocalDateTime obterTempoFinal(SessaoDTO sessaoDTO) {
